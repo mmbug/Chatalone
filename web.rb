@@ -6,7 +6,7 @@ FILE = '/tmp/msgs'
 
 def read_messages(lines)
   open(FILE, "w") do |f|
-    f.puts("nobody.warning.hello chat")
+    f.puts("nobody;warning;hello chat")
   end unless File.exist?(FILE)
   content = IO.readlines(FILE)
   if content.length < lines
@@ -35,7 +35,7 @@ end
 
 post '/send' do
   if !params[:message].nil?
-    newcontent = read_messages(9).push(params[:nick]. + "." + params[:class] + "." + params[:message])
+    newcontent = read_messages(9).push(params[:nick]. + ";" + params[:class] + ";" + params[:message])
     open(FILE, 'w') do |f|
       newcontent.each do |line|
         f.puts(line)

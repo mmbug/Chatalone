@@ -23,7 +23,7 @@ end
 helpers do
 
   def location(loc)
-    "location.href = '" + url(loc) + "'"
+    "location.href = '" + to(loc) + "'"
   end
 
   def partial(page, options = {})
@@ -61,7 +61,7 @@ post '/create' do
       if File.read("/tmp/" + form[:name] + ".pwd") == form[:password]
         session[:logged_room] = form[:name]
         session[:logged_password] = form[:password]
-        redirect url("/talking")
+        redirect to("/talking")
       else
         @error_message = "wrong password"
         output = haml :index, :layout => :layout
@@ -71,7 +71,7 @@ post '/create' do
       File.open("/tmp/" + form[:name] + ".pwd", 'w') { |file| file.write(form[:password]) }
       session[:logged_room] = form[:name]
       session[:logged_password] = form[:password]
-      redirect url("/talking")
+      redirect to("/talking")
     end
   end
 end

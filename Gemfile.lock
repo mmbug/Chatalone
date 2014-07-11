@@ -3,8 +3,12 @@ GEM
   specs:
     daemons (1.1.9)
     eventmachine (1.0.3)
+    formkeeper (0.0.13)
+      hpricot
+      rack
     haml (4.0.5)
       tilt
+    hpricot (0.8.6)
     rack (1.5.2)
     sinatra (1.1.0)
       rack (~> 1.1)
@@ -19,6 +23,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  formkeeper
   haml
   sinatra (= 1.1.0)
   thin

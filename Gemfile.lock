@@ -13,6 +13,11 @@ GEM
     sinatra (1.1.0)
       rack (~> 1.1)
       tilt (~> 1.1)
+    sinatra-formkeeper (0.0.7)
+      formkeeper (~> 0.0.12)
+      hpricot
+      rack
+      sinatra
     thin (1.6.2)
       daemons (>= 1.0.9)
       eventmachine (>= 1.0.0)
@@ -23,7 +28,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  formkeeper
   haml
   sinatra (= 1.1.0)
+  sinatra-formkeeper
   thin

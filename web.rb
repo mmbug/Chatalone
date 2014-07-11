@@ -107,6 +107,8 @@ post '/send' do
 end
 
 get '/messages' do
-  @messages = read_messages(10)
-  partial "messages"
+  if logged_room?
+    @messages = read_messages(10)
+    partial "messages"
+  end
 end

@@ -1,0 +1,20 @@
+.container.padding-around-large.shift2.center.index-container
+  .brand.warning
+    chatalone
+  .big.padding-vertical-large.thin
+    create your private talking room
+  %form{:action => url("/create"), :method => "post"}
+    %input.text-field.f-span6.medium{:placeholder => "room name", :name => "name"}
+    %input.text-field.f-span6.medium{:placeholder => "room password", :name => "password"}
+    - if form.failed?
+      %ul.success.medium.thin
+        - form.messages(:create).each do |message|
+          %li= message
+    - if @error_message
+      %ul.success.medium.thin
+        %li= @error_message
+    %br
+    %br
+    %button.button-success.big.f-span5
+      create
+

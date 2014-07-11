@@ -1,0 +1,13 @@
+.container.padding-around-large.shift2.center.index-container
+  %h1.light.large= @room
+  %form{:action => url("/login"), :method => "post"}
+    %input.text-field.f-span6.medium{:placeholder => "room password", :name => "password"}
+    - if form.failed?
+      %ul.success.medium.thin
+        - form.messages(:login).each do |message|
+          %li= message
+    %br
+    %br
+    %button.button-success.big.f-span5
+      enter room
+

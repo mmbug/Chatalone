@@ -1,42 +1,48 @@
-.container.shift2.padding-around-large
-  .container.messages.rounded-borders.padding-around-medium#message-container
+.container.shift2
+  .container.messages.rounded-borders.warning.padding-around-medium#message-container
     = partial "messages"
   .container.padding-around-medium
     %form{:action => "send", :method => "post"}
-      %input.text-field.f-span7{:type => "text", :name => "message", :id => "message", :autocomplete => "off"}
-      %input.text-field.f-span2{:type => "text", :name => "nick", :value => @nick}
-      %input.text-field.f-span2{:type => "text", :name => "class", :value => @class}
+      %input.text-field.f-span9.medium{:type => "text", :name => "message", :id => "message", :autocomplete => "off"}
+      %input.text-field.f-span2.medium{:type => "text", :name => "nick", :value => @nick, :placeholder => "nick"}
       %input.hide{:type => "submit"}
-    %button{:onclick => "notifyMe()"}
+    %button.button-info.f-span4{:onclick => "notifyMe()"}
       allow notifications
-
+    %button.button-info.f-span4{:onclick => location("/leave")}
+      leave room
 :javascript
   function notifyMe() {
     if (!("Notification" in window)) {
       alert("This browser does not support desktop notification");
     } else if (Notification.permission === "granted") {
-      var notification = new Notification("Hi there!");
+      var notification = new Notification("read chat", {icon: "images/logo.svg"});
+      notification.onclick = function() {
+        $(window).focus();
+      }
     } else if (Notification.permission !== 'denied') {
       Notification.requestPermission(function (permission) {
         if(!('permission' in Notification)) {
           Notification.permission = permission;
         }
         if (permission === "granted") {
-          var notification = new Notification("Hi there!");
+          var notification = new Notification("read chat", {icon: "images/logo.svg"});
+          notification.onclick = function() {
+            $(window).focus();
+          }
         }
       });
     }
   }
   setInterval(function() {
       $.get('/messages', function(data) {
-            $("#message-container").html(data);
-            if (data != $(window).data("messages")) {
-              if ($(window).data("status") == "inactive") {
-                notifyMe();
-              }
+          $("#message-container").html(data);
+          if (data != $(window).data("messages")) {
+            if ($(window).data("status") == "inactive") {
+              notifyMe();
             }
-            $(window).data("messages", data);
           }
+          $(window).data("messages", data);
+        }
       );
   }, 5000);
   $(document).ready(function() {

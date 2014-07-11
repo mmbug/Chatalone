@@ -1,0 +1,5 @@
+create:
+  name:
+    present: enter chatroom name
+  password:
+    present: enter chatroom password

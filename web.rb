@@ -3,7 +3,6 @@ require 'sinatra';
 require 'haml'
 require 'sinatra/formkeeper'
 
-FILE = '/tmp/msgs'
 form_messages File.expand_path(File.join(settings.root, 'messages', 'en.yml'))
 
 enable :sessions
@@ -111,4 +110,8 @@ get '/messages' do
     @messages = read_messages(10)
     partial "messages"
   end
+end
+
+error do
+  'Oops, an error happened: ' + env['sinatra.error'].name
 end

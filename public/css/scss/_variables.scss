@@ -1,22 +1,20 @@
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,600&subset=latin,cyrillic);
-@import url(http://fonts.googleapis.com/css?family=Ubuntu&subset=latin,cyrillic);
-@import url(http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic&subset=latin,cyrillic);
+@import url(http://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700&subset=latin,cyrillic);
 
-$main-font: "Roboto";
-$h-font: "Roboto";
-$base-font-size: 16px;
+$main-font: "Ubuntu Mono";
+$h-font: "Ubuntu Mono";
+$base-font-size: 20px;
 
 $switch-orientation-point-medium: "1100px";
 $switch-orientation-point-mobile: "600px";
 
 @mixin main-font() {
   font-family: $main-font;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 @mixin h-font() {
   font-family: $h-font;
-  font-weight: 300;
+  font-weight: 400;
   color: $warning;
 }
 
@@ -33,15 +31,14 @@ $menu-aside-width: 220px;
 //$info: #f7ab50;
 //$text-color: darken($warning, 20);
 
-$background-color: #fff;
-$controls-depth: 5px;
+$background-color: #34495e;
+$controls-depth: 4px;
 $controls-text-color: #fbfbfb;
-$controls-border-radius: 4px;
-$controls-default-color: darken($background-color, 25);
-$success: #fd5559;
-//$warning: #4abfb4;
-$warning: #4e4e4e;
-$info: lighten(#394e63, 20);
-$info: #4d8cdf;
-$text-color: lighten(#4e4e4e, 20);
-$inputs-background: darken($background-color, 7);
+$controls-border-radius: 7px;
+$controls-default-color: darken($background-color, 10);
+$success: #35db49;
+$warning: #ea5555;
+$info: #3598db;
+$text-color: lighten($background-color, 50);
+$inputs-background: lighten($background-color, 10);
+$inputs-text-color: lighten($background-color, 40);

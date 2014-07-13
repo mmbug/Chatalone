@@ -1,20 +1,24 @@
-.container.padding-around-large.shift2.center.index-container
-  .brand.warning
-    chatalone
-  .big.padding-vertical-large.thin
-    create your private talking room
-  %form{:action => url("/create"), :method => "post"}
-    %input.text-field.f-span6.medium{:placeholder => "room name", :name => "name"}
-    %input.text-field.f-span6.medium{:placeholder => "room password", :name => "password"}
-    - if form.failed?
-      %ul.success.medium.thin
-        - form.messages(:create).each do |message|
-          %li= message
-    - if @error_message
-      %ul.success.medium.thin
-        %li= @error_message
-    %br
-    %br
-    %button.button-success.big.f-span5
-      create
-
+.container.padding-around-base.shift3.center.index-container
+  .big.lighten-text.padding-horizontal-large
+    chatalone#
+  private rooms
+  .container.padding-vertical-large.left.shift2
+    %form{:action => url("/create"), :method => "post"}
+      %input.text-field.f-span12.medium{:placeholder => "room name", :name => "name"}
+      %input.text-field.f-span12.medium{:placeholder => "room password", :name => "password"}
+      - if form.failed?
+        %ul.success.medium.thin
+          - form.messages(:create).each do |message|
+            %li= message
+      - if @error_message
+        %ul.success.medium.thin
+          %li= @error_message
+      %br
+      %br
+      %button.button-info.f-span10.right.medium
+        %i.icon-key
+        create room
+    %p.darken-text
+      chatalone# is an open source project. check out source code at
+      %i.icon-github-circled.medium
+      repo

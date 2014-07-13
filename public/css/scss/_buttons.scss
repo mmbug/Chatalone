@@ -1,5 +1,6 @@
 %button {
   @extend %control;
+  @include main-font();
   text-transform: uppercase;
   transition: all .3s ease;
   font-size: $base-font-size/1.2;

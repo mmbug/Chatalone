@@ -3,7 +3,7 @@
     chatalone#
   private rooms
   .container.padding-vertical-large.left.shift2
-    %form{:action => url("/create"), :method => "post"}
+    %form{:action => to("/create"), :method => "post"}
       %input.text-field.f-span12.medium{:placeholder => "room name", :name => "name"}
       %input.text-field.f-span12.medium{:placeholder => "room password", :name => "password"}
       - if form.failed?
@@ -17,7 +17,7 @@
       %br
       %button.button-info.f-span10.right.medium
         %i.icon-key
-        create room
+        create | login
     %p.darken-text
       chatalone# is an open source project. check out source code at
       %i.icon-github-circled.medium

@@ -6,6 +6,7 @@ require 'sinatra/formkeeper'
 form_messages File.expand_path(File.join(settings.root, 'messages', 'en.yml'))
 
 enable :sessions
+set :session_secret, 'chatalone_secret_key'
 
 def read_messages(lines)
   open("/tmp/" + session[:logged_room], "w") do |f|

@@ -32,6 +32,9 @@ helpers do
 
   def logged_room?
     if !session[:logged_room].nil?
+      open("/tmp/" + session[:logged_room], "w") do |f|
+        f.puts("nobody;hello "+ session[:logged_room])
+      end unless File.exist?("/tmp/" + session[:logged_room])
       pass = File.read("/tmp/" + session[:logged_room] + ".pwd")
       session[:logged_password].eql?(pass)
     else

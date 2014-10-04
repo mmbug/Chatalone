@@ -113,6 +113,6 @@ get '/messages' do
   end
 end
 
-error do
-  'Oops, an error happened: ' 
-end
+# error do
+#   'Oops, an error happened: '
+# end

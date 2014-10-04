@@ -114,5 +114,5 @@ get '/messages' do
 end
 
 error do
-  'Oops, an error happened: ' + env['sinatra.error'].name
+  'Oops, an error happened: ' 
 end

@@ -6,7 +6,6 @@ require 'sinatra/formkeeper'
 form_messages File.expand_path(File.join(settings.root, 'messages', 'en.yml'))
 
 enable :sessions
-set :session_secret, 'chatalone_secret_key'
 
 def read_messages(lines)
   open("/tmp/" + session[:logged_room], "w") do |f|
@@ -32,9 +31,6 @@ helpers do
 
   def logged_room?
     if !session[:logged_room].nil?
-      open("/tmp/" + session[:logged_room], "w") do |f|
-        f.puts("nobody;hello "+ session[:logged_room])
-      end unless File.exist?("/tmp/" + session[:logged_room])
       pass = File.read("/tmp/" + session[:logged_room] + ".pwd")
       session[:logged_password].eql?(pass)
     else
@@ -116,6 +112,6 @@ get '/messages' do
   end
 end
 
-# error do
-#   'Oops, an error happened: '
-# end
+error do
+  'Oops, an error happened: ' + env['sinatra.error'].name
+end
